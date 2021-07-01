@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<h1>Welcome to the login app</h1>
+<a href="{{url_for('login')}}">Go to login page</a>
+<a href="{{url_for('register')}}">Go to register page</a>
+{% endblock %}

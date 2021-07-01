@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+<h1>Please login</h1>
+<form method="post">
+    {{ form.csrf_token() }}
+<!--    or {{ form.hidden_tag() }}-->
+    {{ form.username }}
+    {{ form.password }}
+    {{ form.submit }}
+
+</form>
+<a href="{{url_for('register')}}">Go to register page</a>
+<br>
+<a href="{{url_for('home')}}">Back to home</a>
+
+{% endblock %}
