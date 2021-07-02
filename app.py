@@ -4,7 +4,7 @@ from os import path
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
-from wtforms.validators import InputRequired, Length, ValidationError
+from wtforms.validators import InputRequired, Length, ValidationError, Email
 from flask_bcrypt import Bcrypt
 
 app = Flask(__name__)
@@ -45,7 +45,7 @@ class RegisterForm(FlaskForm):
     # TO validate the username to be unique
     def validate_username(self, username):
         flash('doing validating user ....')
-        # must use username = username.data. without .data i won't raise the ValidationError
+        # IMPORTANT: M U S T use username = username.data. without .data i won't raise the ValidationError
         existed_user = User.query.filter_by(username=username.data).first()
         if existed_user:
             raise ValidationError('This username has been registered, choose another username or go to login page')
